@@ -1,7 +1,15 @@
 import React from 'react'
+import { useDispatch } from 'react-redux'
+import { add } from '../../favs/favsSlice'
 import './CharacterCard.sass'
 
 export const CharacterCard = ({ character }) => {
+  const dispatch = useDispatch()
+
+  const addToFavs = () => {
+    dispatch(add({ ...character }))
+  }
+
   return (
     <div className="character">
       <div className={`character__image ${character.house.toLowerCase()}`}>
@@ -19,7 +27,9 @@ export const CharacterCard = ({ character }) => {
             {character.alive ? 'vivo' : 'finado'} <br />{' '}
             {character.hogwartsStudent ? 'estudiante' : 'staff'}
           </p>
-          <span className="material-symbols-outlined">bookmark</span>
+          <span className="material-symbols-outlined" onClick={addToFavs}>
+            bookmark
+          </span>
         </div>
       </div>
     </div>

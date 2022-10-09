@@ -1,8 +1,11 @@
 import React from 'react'
-
+import { useSelector, useDispatch } from 'react-redux'
 import './Favs.sass'
 
 export const Favs = ({ isOpened }) => {
+  const favs = useSelector((state) => state.favs.value)
+  console.log('Son los favoritos', favs)
+
   return (
     <div className={`favs ${isOpened ? 'opened' : 'closed'} `}>
       <div className="fav">
