@@ -1,96 +1,34 @@
-import { useState } from 'react'
 import { Button } from './components/Button/Button'
 import { CharacterCard } from './components/CharacterCard/CharacterCard'
 import { Input } from './components/Input/Input'
 import { Menu } from './components/Menu/Menu'
 import { Modal } from './components/Modal/Modal'
-import { useSelector } from 'react-redux'
+import { useState } from 'react'
+
 import { RadioButton } from './components/RadioButton/RadioButton'
 import harryPotterImg from './assets/harry-potter.png'
-import charactersData from './data/hp-characters.json'
+
 import './index.sass'
+import { useCharacters } from './hooks/useCharacters'
+import { useForm } from './hooks/useForm'
 
 function App() {
-  const favs = useSelector((state) => state.favs.value)
-  const favsNames = favs.map(({ name }) => name)
-
   const [isModalOpen, setIsModalOpen] = useState(false)
-  const [characters, setCharacters] = useState(charactersData)
-  const [studentsAreActive, setStudentsAreActive] = useState(false)
-  const [staffAreActive, setStaffAreActive] = useState(false)
+  const {
+    favsNames,
+    characters,
+    studentsAreActive,
+    staffAreActive,
+    filterStaff,
+    filterStudents,
+  } = useCharacters()
 
-  const filterStudents = () => {
-    const auxCharacters = charactersData.filter(
-      ({ hogwartsStudent }) => !!hogwartsStudent,
-    )
-    setCharacters([...auxCharacters])
-    if (studentsAreActive) {
-      setStudentsAreActive(false)
-      setCharacters(charactersData)
-      return
-    }
-    setStudentsAreActive(true)
-    setStaffAreActive(false)
-  }
-
-  const filterStaff = () => {
-    const auxCharacters = charactersData.filter(
-      ({ hogwartsStaff }) => !!hogwartsStaff,
-    )
-    setCharacters([...auxCharacters])
-    if (staffAreActive) {
-      setStaffAreActive(false)
-      setCharacters(charactersData)
-      return
-    }
-    setStudentsAreActive(false)
-    setStaffAreActive(true)
-  }
-
-  const [form, setForm] = useState({
-    name: '',
-    dateOfBirth: '',
-    eyeColour: '',
-    hairColour: '',
-    gender: '',
-    hogwartsStudent: false,
-    hogwartsStaff: false,
-    image: '',
-  })
-
-  const handleFormChange = (event) => {
-    const { target } = event
-
-    if (target.name === 'posicion') {
-      setForm({
-        ...form,
-        hogwartsStaff: false,
-        hogwartsStudent: false,
-        [target.value]: true,
-      })
-      return
-    }
-
-    setForm({
-      ...form,
-      [target.name]: target.value,
-    })
-  }
-
-  const handleFileChange = (event) => {
-    const file = event.target.files[0]
-    const pictureUrl = URL.createObjectURL(file)
-
-    setForm({
-      ...form,
-      image: pictureUrl,
-    })
-  }
-
-  const handleFormSubmit = (event) => {
-    event.preventDefault()
-    console.log(form)
-  }
+  const {
+    form,
+    handleFormChange,
+    handleFileChange,
+    handleFormSubmit,
+  } = useForm()
 
   return (
     <div className="App">
