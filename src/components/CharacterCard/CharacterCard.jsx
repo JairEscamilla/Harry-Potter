@@ -3,7 +3,7 @@ import { useDispatch } from 'react-redux'
 import { add } from '../../favs/favsSlice'
 import './CharacterCard.sass'
 
-export const CharacterCard = ({ character }) => {
+export const CharacterCard = ({ character, isFav }) => {
   const dispatch = useDispatch()
 
   const addToFavs = () => {
@@ -27,7 +27,10 @@ export const CharacterCard = ({ character }) => {
             {character.alive ? 'vivo' : 'finado'} <br />{' '}
             {character.hogwartsStudent ? 'estudiante' : 'staff'}
           </p>
-          <span className="material-symbols-outlined" onClick={addToFavs}>
+          <span
+            className={`material-symbols-outlined ${isFav ? 'filled' : ''}`}
+            onClick={addToFavs}
+          >
             bookmark
           </span>
         </div>

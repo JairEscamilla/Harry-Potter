@@ -4,12 +4,16 @@ import { CharacterCard } from './components/CharacterCard/CharacterCard'
 import { Input } from './components/Input/Input'
 import { Menu } from './components/Menu/Menu'
 import { Modal } from './components/Modal/Modal'
+import { useSelector } from 'react-redux'
 import { RadioButton } from './components/RadioButton/RadioButton'
 import harryPotterImg from './assets/harry-potter.png'
 import charactersData from './data/hp-characters.json'
 import './index.sass'
 
 function App() {
+  const favs = useSelector((state) => state.favs.value)
+  const favsNames = favs.map(({ name }) => name)
+
   const [isModalOpen, setIsModalOpen] = useState(false)
   const [characters, setCharacters] = useState(charactersData)
   const [studentsAreActive, setStudentsAreActive] = useState(false)
@@ -105,6 +109,7 @@ function App() {
           <CharacterCard
             key={character.name}
             character={character}
+            isFav={favsNames.includes(character.name)}
           ></CharacterCard>
         ))}
       </div>
