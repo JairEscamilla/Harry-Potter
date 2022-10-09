@@ -13,7 +13,20 @@ function App() {
   const [isModalOpen, setIsModalOpen] = useState(false)
   const [characters, setCharacters] = useState(charactersData)
 
-  console.log(characters)
+  const filterStudents = () => {
+    const auxCharacters = charactersData.filter(
+      ({ hogwartsStudent }) => !!hogwartsStudent,
+    )
+    setCharacters([...auxCharacters])
+  }
+
+  const filterStaff = () => {
+    const auxCharacters = charactersData.filter(
+      ({ hogwartsStaff }) => !!hogwartsStaff,
+    )
+    setCharacters([...auxCharacters])
+  }
+
   const [form, setForm] = useState({
     nombre: '',
     cumpleanios: '',
@@ -56,8 +69,12 @@ function App() {
       />
       <h4 className="filters__title">Selecciona tu filtro</h4>
       <div className="filter__container">
-        <Button variant="outlined">Estudiantes</Button>
-        <Button variant="outlined">Staff</Button>
+        <Button variant="outlined" onClick={filterStudents}>
+          Estudiantes
+        </Button>
+        <Button variant="outlined" onClick={filterStaff}>
+          Staff
+        </Button>
       </div>
       <div className="character-cards">
         {characters.map((character) => (
