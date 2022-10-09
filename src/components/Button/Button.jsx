@@ -6,9 +6,14 @@ export const Button = ({
   onClick,
   type = 'button',
   variant = '',
+  isActive = false,
 }) => {
   return (
-    <button className={`btn btn-${variant}`} onClick={onClick} type={type}>
+    <button
+      className={`btn btn-${variant} ${isActive ? 'btn-active' : ''}`}
+      onClick={onClick}
+      type={type}
+    >
       {children}
     </button>
   )

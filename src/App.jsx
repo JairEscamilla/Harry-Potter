@@ -12,12 +12,21 @@ import './index.sass'
 function App() {
   const [isModalOpen, setIsModalOpen] = useState(false)
   const [characters, setCharacters] = useState(charactersData)
+  const [studentsAreActive, setStudentsAreActive] = useState(false)
+  const [staffAreActive, setStaffAreActive] = useState(false)
 
   const filterStudents = () => {
     const auxCharacters = charactersData.filter(
       ({ hogwartsStudent }) => !!hogwartsStudent,
     )
     setCharacters([...auxCharacters])
+    if (studentsAreActive) {
+      setStudentsAreActive(false)
+      setCharacters(charactersData)
+      return
+    }
+    setStudentsAreActive(true)
+    setStaffAreActive(false)
   }
 
   const filterStaff = () => {
@@ -25,6 +34,13 @@ function App() {
       ({ hogwartsStaff }) => !!hogwartsStaff,
     )
     setCharacters([...auxCharacters])
+    if (staffAreActive) {
+      setStaffAreActive(false)
+      setCharacters(charactersData)
+      return
+    }
+    setStudentsAreActive(false)
+    setStaffAreActive(true)
   }
 
   const [form, setForm] = useState({
@@ -69,10 +85,18 @@ function App() {
       />
       <h4 className="filters__title">Selecciona tu filtro</h4>
       <div className="filter__container">
-        <Button variant="outlined" onClick={filterStudents}>
+        <Button
+          variant="outlined"
+          onClick={filterStudents}
+          isActive={studentsAreActive}
+        >
           Estudiantes
         </Button>
-        <Button variant="outlined" onClick={filterStaff}>
+        <Button
+          variant="outlined"
+          onClick={filterStaff}
+          isActive={staffAreActive}
+        >
           Staff
         </Button>
       </div>
