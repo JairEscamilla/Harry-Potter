@@ -1,31 +1,30 @@
 import React from 'react'
 import { useSelector, useDispatch } from 'react-redux'
+import { remove } from '../../favs/favsSlice'
 import './Favs.sass'
 
 export const Favs = ({ isOpened }) => {
   const favs = useSelector((state) => state.favs.value)
-  console.log('Son los favoritos', favs)
+  const dispatch = useDispatch()
+
+  const removeFav = (name) => {
+    dispatch(remove(name))
+  }
 
   return (
     <div className={`favs ${isOpened ? 'opened' : 'closed'} `}>
-      <div className="fav">
-        <img
-          src="https://cdn-icons-png.flaticon.com/512/149/149071.png"
-          alt="fav picture"
-          className="fav__picture"
-        />
-        <p className="fav__name">Luna Lovegood</p>
-        <span className="material-symbols-outlined">delete</span>
-      </div>
-      <div className="fav">
-        <img
-          src="https://cdn-icons-png.flaticon.com/512/149/149071.png"
-          alt="fav picture"
-          className="fav__picture"
-        />
-        <p className="fav__name">Luna Lovegood</p>
-        <span className="material-symbols-outlined">delete</span>
-      </div>
+      {favs.map(({ name, image }) => (
+        <div className="fav" key={name}>
+          <img src={image} alt="fav picture" className="fav__picture" />
+          <p className="fav__name">{name}</p>
+          <span
+            className="material-symbols-outlined"
+            onClick={() => removeFav(name)}
+          >
+            delete
+          </span>
+        </div>
+      ))}
     </div>
   )
 }
