@@ -5,6 +5,7 @@ import { Input } from './components/Input/Input'
 import { Menu } from './components/Menu/Menu'
 import { Modal } from './components/Modal/Modal'
 import { RadioButton } from './components/RadioButton/RadioButton'
+import harryPotterImg from './assets/harry-potter.png'
 import './index.sass'
 
 function App() {
@@ -44,8 +45,16 @@ function App() {
 
   return (
     <div className="App">
-      <Button onClick={() => setIsModalOpen(true)}>Abrir</Button>
-      <Button onClick={() => setIsModalOpen(false)}>Cerrar</Button>
+      <img
+        src={harryPotterImg}
+        alt="Harry Potter logo"
+        className="hp-letters"
+      />
+      <h4 className="filters__title">Selecciona tu filtro</h4>
+      <div className="filter__container">
+        <Button>Estudiantes</Button>
+        <Button>Staff</Button>
+      </div>
       <CharacterCard></CharacterCard>
       <Modal
         isOpen={isModalOpen}
