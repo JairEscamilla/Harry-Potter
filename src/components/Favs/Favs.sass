@@ -4,13 +4,8 @@
     position: absolute
     width: 100%
     background: $purple
-    z-index: -1
-    top: -1px
-    border-bottom-left-radius: 5px
-    border-bottom-right-radius: 5px
-    padding: 0 7px
-    padding-top: 45px
-    padding-bottom: 10px
+    bottom: 20px
+    padding: 10px 15px
 
     &.opened
         display: block
@@ -22,6 +17,11 @@
         display: flex
         justify-content: space-between
         align-items: center
+        margin-bottom: 15px
+    
+    .fav:not(:last-child)
+        border-bottom: 1px solid #403B6D
+        padding-bottom: 8px
 
     .fav__picture
         width: 35px
