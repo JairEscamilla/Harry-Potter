@@ -1,4 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600;700&display=swap')
+@import "./variables"
+
 *
     margin: 0
     padding: 0
@@ -9,3 +11,34 @@
 
 body
     background: black
+
+
+.new-character-form
+    display: flex
+    flex-wrap: wrap
+    justify-content: space-around
+
+.radio-group
+    width: 45%
+
+.radio-group-title 
+    padding: 10px 0
+    text-transform: uppercase
+    font-weight: 400
+    font-size: 14px
+
+.radios__container
+    display: flex
+    justify-content: space-between
+    margin-bottom: 20px
+    label
+        color: #263238
+        font-size: 16px
+    
+    input
+        width: 15px
+        height: 15px
+        accent-color: $purple
+        margin-right: 5px
+
+    
