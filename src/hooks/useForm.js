@@ -1,11 +1,18 @@
-import { useState } from 'react'
+import { useRef, useState } from 'react'
 
-export const useForm = () => {
+export const useForm = (
+  setIsModalOpen,
+  setCharacters,
+  characters,
+  newCharacters,
+) => {
+  const formRef = useRef(null)
   const [form, setForm] = useState({
     name: '',
     dateOfBirth: '',
     eyeColour: '',
     hairColour: '',
+    alive: true,
     gender: '',
     hogwartsStudent: false,
     hogwartsStaff: false,
@@ -41,6 +48,20 @@ export const useForm = () => {
     })
   }
 
+  const resetForm = () => {
+    setForm({
+      name: '',
+      dateOfBirth: '',
+      eyeColour: '',
+      hairColour: '',
+      gender: '',
+      hogwartsStudent: false,
+      hogwartsStaff: false,
+      image: '',
+    })
+    formRef.current.reset()
+  }
+
   const handleFormSubmit = async (event) => {
     event.preventDefault()
     const response = await fetch('http://localhost:3000/characters', {
@@ -50,9 +71,13 @@ export const useForm = () => {
         'Content-Type': 'application/json',
       },
     })
-    const parsedResponse = await response.json()
-    console.log(parsedResponse)
+    await response.json()
+    setCharacters([...characters, form])
+    newCharacters.current = [...newCharacters.current, form]
+
+    resetForm()
+    setIsModalOpen(false)
   }
 
-  return { form, handleFormChange, handleFileChange, handleFormSubmit }
+  return { form, handleFormChange, handleFileChange, handleFormSubmit, formRef }
 }

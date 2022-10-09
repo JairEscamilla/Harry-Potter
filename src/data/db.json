@@ -1,16 +1,42 @@
 {
   "characters": [
     {
-      "name": "asd",
-      "dateOfBirth": "asdqw",
-      "eyeColour": "qwewq",
-      "hairColour": "wqewqe",
+      "name": "Jair",
+      "dateOfBirth": "14/06/2000",
+      "eyeColour": "Negros",
+      "hairColour": "Negros",
+      "alive": true,
       "gender": "",
       "hogwartsStudent": true,
       "hogwartsStaff": false,
-      "image": "blob:http://127.0.0.1:5173/68293161-6f99-4313-9f42-71bb954e767e",
+      "image": "blob:http://127.0.0.1:5173/b433bba3-3afe-45ed-8b0d-189eeaf544bf",
       "genero": "male",
       "id": 1
+    },
+    {
+      "name": "asds",
+      "dateOfBirth": "aasd",
+      "eyeColour": "qwe",
+      "hairColour": "qwewqe",
+      "gender": "",
+      "alive": true,
+      "hogwartsStudent": false,
+      "hogwartsStaff": true,
+      "image": "blob:http://127.0.0.1:5173/767f3ee0-b089-40f7-afcd-b0ffc46fdf66",
+      "id": 2
+    },
+    {
+      "name": "Pruebas",
+      "dateOfBirth": "asdasd",
+      "eyeColour": "adqwe",
+      "hairColour": "wqewqe",
+      "alive": true,
+      "gender": "",
+      "hogwartsStudent": true,
+      "hogwartsStaff": false,
+      "image": "",
+      "genero": "male",
+      "id": 3
     }
   ]
 }

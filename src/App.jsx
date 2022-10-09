@@ -8,12 +8,13 @@ import { useState } from 'react'
 import { RadioButton } from './components/RadioButton/RadioButton'
 import harryPotterImg from './assets/harry-potter.png'
 
-import './index.sass'
 import { useCharacters } from './hooks/useCharacters'
 import { useForm } from './hooks/useForm'
+import './index.sass'
 
 function App() {
   const [isModalOpen, setIsModalOpen] = useState(false)
+
   const {
     favsNames,
     characters,
@@ -21,14 +22,17 @@ function App() {
     staffAreActive,
     filterStaff,
     filterStudents,
-  } = useCharacters()
+    setCharacters,
+    newCharacters,
+  } = useCharacters(isModalOpen)
 
   const {
     form,
     handleFormChange,
     handleFileChange,
     handleFormSubmit,
-  } = useForm()
+    formRef,
+  } = useForm(setIsModalOpen, setCharacters, characters, newCharacters)
 
   return (
     <div className="App">
@@ -69,7 +73,11 @@ function App() {
         title="Agrega un personaje"
         setIsOpen={setIsModalOpen}
       >
-        <form className="new-character-form" onSubmit={handleFormSubmit}>
+        <form
+          className="new-character-form"
+          onSubmit={handleFormSubmit}
+          ref={formRef}
+        >
           <Input label="Nombre" name="name" onChange={handleFormChange} />
 
           <Input

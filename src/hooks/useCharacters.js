@@ -1,8 +1,10 @@
 import { useSelector } from 'react-redux'
-import { useState } from 'react'
+import { useState, useRef, useEffect } from 'react'
+
 import charactersData from '../data/hp-characters.json'
 
-export const useCharacters = () => {
+export const useCharacters = (isModalOpen) => {
+  const newCharacters = useRef()
   const favs = useSelector((state) => state.favs.value)
   const favsNames = favs.map(({ name }) => name)
 
@@ -11,13 +13,14 @@ export const useCharacters = () => {
   const [staffAreActive, setStaffAreActive] = useState(false)
 
   const filterStudents = () => {
-    const auxCharacters = charactersData.filter(
+    const allCharacters = [...charactersData, ...newCharacters.current]
+    const auxCharacters = allCharacters.filter(
       ({ hogwartsStudent }) => !!hogwartsStudent,
     )
     setCharacters([...auxCharacters])
     if (studentsAreActive) {
       setStudentsAreActive(false)
-      setCharacters(charactersData)
+      setCharacters(allCharacters)
       return
     }
     setStudentsAreActive(true)
@@ -25,24 +28,45 @@ export const useCharacters = () => {
   }
 
   const filterStaff = () => {
-    const auxCharacters = charactersData.filter(
+    const allCharacters = [...charactersData, ...newCharacters.current]
+    const auxCharacters = allCharacters.filter(
       ({ hogwartsStaff }) => !!hogwartsStaff,
     )
     setCharacters([...auxCharacters])
     if (staffAreActive) {
       setStaffAreActive(false)
-      setCharacters(charactersData)
+      setCharacters(allCharacters)
       return
     }
     setStudentsAreActive(false)
     setStaffAreActive(true)
   }
 
+  useEffect(() => {
+    const fetchNewCharacters = async () => {
+      const response = await fetch('http://localhost:3000/characters')
+      newCharacters.current = await response.json()
+
+      setCharacters([...characters, ...newCharacters.current])
+      if (studentsAreActive) {
+        filterStudents()
+      }
+
+      if (staffAreActive) {
+        filterStaff()
+      }
+    }
+
+    fetchNewCharacters()
+  }, [])
+
   return {
     favsNames,
     characters,
     studentsAreActive,
     staffAreActive,
+    newCharacters,
+    setCharacters,
     filterStaff,
     filterStudents,
   }

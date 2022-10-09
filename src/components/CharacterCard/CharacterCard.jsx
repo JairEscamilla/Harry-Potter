@@ -12,7 +12,7 @@ export const CharacterCard = ({ character, isFav }) => {
 
   return (
     <div className="character">
-      <div className={`character__image ${character.house.toLowerCase()}`}>
+      <div className={`character__image ${character.house?.toLowerCase()}`}>
         <img src={character.image} alt="character image" />
       </div>
 
