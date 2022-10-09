@@ -1,0 +1,30 @@
+dialog
+    width: 80vw
+    padding: 10px 20px
+    margin: auto
+    border-radius: 10px
+    transition: all 0.1s ease-in-out
+
+    .modal__header 
+        display: flex
+        align-items: center
+        justify-content: space-between
+
+    .title
+        font-weight: 600
+        font-size: 24px
+        line-height: 40px
+
+    & * , .modal__body
+        color: black
+    
+    .modal__body 
+        margin-top: 15px
+    
+    .material-symbols-outlined 
+        cursor: pointer
+        color: #333333 !important
+        font-weight: 300
+
+    &::backdrop
+        background: rgba(0, 0, 0, 0.5)
