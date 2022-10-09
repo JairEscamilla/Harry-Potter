@@ -52,8 +52,8 @@ function App() {
       />
       <h4 className="filters__title">Selecciona tu filtro</h4>
       <div className="filter__container">
-        <Button>Estudiantes</Button>
-        <Button>Staff</Button>
+        <Button variant="outlined">Estudiantes</Button>
+        <Button variant="outlined">Staff</Button>
       </div>
       <CharacterCard></CharacterCard>
       <Modal
