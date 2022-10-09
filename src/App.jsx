@@ -42,7 +42,7 @@ function App() {
         className="hp-letters"
       />
       <h4 className="filters__title">Selecciona tu filtro</h4>
-      <div className="filter__container">
+      <div className="filters__container">
         <Button
           variant="outlined"
           onClick={filterStudents}
