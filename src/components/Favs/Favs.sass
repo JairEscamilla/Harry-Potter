@@ -1,0 +1,32 @@
+@import "../../variables"
+
+.favs 
+    position: absolute
+    width: 100%
+    background: $purple
+    z-index: -1
+    top: -1px
+    border-bottom-left-radius: 5px
+    border-bottom-right-radius: 5px
+    padding: 0 7px
+    padding-top: 45px
+    padding-bottom: 10px
+
+    &.opened
+        display: block
+    
+    &.closed
+        display: none
+
+    .fav
+        display: flex
+        justify-content: space-between
+        align-items: center
+
+    .fav__picture
+        width: 35px
+        height: 35px
+        border-radius: 50%
+    
+    .material-symbols-outlined
+        cursor: pointer
