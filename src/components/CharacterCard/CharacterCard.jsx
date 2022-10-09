@@ -18,13 +18,13 @@ export const CharacterCard = ({ character, isFav }) => {
 
       <div className="character__description">
         <h4 className="name">
-          {' '}
           {character.alive ? '' : '+'} {character.name}
         </h4>
 
         <div className="status">
           <p>
-            {character.alive ? 'vivo' : 'finado'} <br />{' '}
+            {character.alive ? 'vivo' : 'finado'}{' '}
+            <span className="divider">/</span> <br />
             {character.hogwartsStudent ? 'estudiante' : 'staff'}
           </p>
           <span
@@ -34,6 +34,29 @@ export const CharacterCard = ({ character, isFav }) => {
             bookmark
           </span>
         </div>
+
+        <h4 className="desktop__name">
+          {character.alive ? '' : '+'} {character.name}
+        </h4>
+
+        <ul className="character-info">
+          <li>
+            <b>Cumpleaños: </b>
+            {character.dateOfBirth}
+          </li>
+          <li>
+            <b>Género: </b>
+            {character.gender}
+          </li>
+          <li>
+            <b>Color de ojos: </b>
+            {character.eyeColour}
+          </li>
+          <li>
+            <b>Color de pelo: </b>
+            {character.hairColour}
+          </li>
+        </ul>
       </div>
     </div>
   )

@@ -3,6 +3,7 @@
 .character
     margin: 0
     width: 48%
+    height: 210px
     max-width: 450px
     border-radius: 5px
     background: white
@@ -49,7 +50,57 @@
         
         &.hufflepuff
             background: linear-gradient(135deg, #FFC700 0%, #FFF388 100%)
-        
+
+    br
+        display: block 
+
+    .divider
+        display: none !important
 
 .material-symbols-outlined
     cursor: pointer
+
+@media (min-width: 768px)
+    .character
+        display: flex
+        height: 255px
+        border-radius: 16px
+       
+
+    .character__image
+        display: flex
+        align-items: center
+        width: 40%
+
+        img
+            width: 120px !important
+            height: 120px !important
+
+    .character__description
+        width: 50%
+        margin-left: 20px
+        padding: 15px 0
+        br
+            display: none
+        .divider
+            display: block !important
+        .status
+            margin: 0 !important
+            justify-content: space-between
+        
+        .name
+            display: none
+        
+        .desktop__name
+            color: #081F32
+            font-weight: 600
+            font-size: 30px
+    .character-info *
+        color: #374A59
+
+    .character-info
+        margin: 15px 0
+        li
+            list-style: none
+            font-size: 14px
+            line-height: 27px

@@ -37,6 +37,19 @@
       "image": "",
       "genero": "male",
       "id": 3
+    },
+    {
+      "name": "Jair2",
+      "dateOfBirth": "14/06/2000",
+      "eyeColour": "Negros",
+      "hairColour": "Negro",
+      "alive": true,
+      "gender": "",
+      "hogwartsStudent": true,
+      "hogwartsStaff": false,
+      "image": "blob:http://127.0.0.1:5173/78ddbda9-7e3a-4f8b-8aa7-f92c141c61b6",
+      "genero": "male",
+      "id": 4
     }
   ]
 }
