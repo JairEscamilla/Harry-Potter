@@ -2,6 +2,7 @@ import { useState } from 'react'
 import { Button } from './components/Button/Button'
 import { CharacterCard } from './components/CharacterCard/CharacterCard'
 import { Input } from './components/Input/Input'
+import { Menu } from './components/Menu/Menu'
 import { Modal } from './components/Modal/Modal'
 import { RadioButton } from './components/RadioButton/RadioButton'
 import './index.sass'
@@ -125,6 +126,7 @@ function App() {
           <Button type="submit">Guardar</Button>
         </form>
       </Modal>
+      <Menu setIsModalOpen={setIsModalOpen} />
     </div>
   )
 }
