@@ -1,4 +1,5 @@
 import React from 'react'
+import './RadioButton.sass'
 
 export const RadioButton = ({ name, id, value, onChange }) => {
   return (
@@ -9,8 +10,11 @@ export const RadioButton = ({ name, id, value, onChange }) => {
         id={id}
         value={value}
         onChange={onChange}
+        className="radio__button"
       />
-      <label htmlFor={id}>{value}</label>
+      <label htmlFor={id} className="radio__label">
+        {value}
+      </label>
     </div>
   )
 }

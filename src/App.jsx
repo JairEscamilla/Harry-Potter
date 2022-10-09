@@ -15,6 +15,7 @@ function App() {
     pelo: '',
     genero: '',
     posicion: '',
+    fotografia: '',
   })
 
   const handleFormChange = (event) => {
@@ -22,6 +23,16 @@ function App() {
     setForm({
       ...form,
       [target.name]: target.value,
+    })
+  }
+
+  const handleFileChange = (event) => {
+    const file = event.target.files[0]
+    const pictureUrl = URL.createObjectURL(file)
+
+    setForm({
+      ...form,
+      fotografia: pictureUrl,
     })
   }
 
@@ -92,6 +103,24 @@ function App() {
               />
             </div>
           </div>
+
+          <input
+            type="file"
+            name="picture"
+            id="picture"
+            onChange={handleFileChange}
+            multiple={false}
+            style={{ width: '100%' }}
+            className="character-picture"
+          />
+
+          {form.fotografia.length > 0 ? (
+            <img
+              className="character-picture"
+              src={form.fotografia}
+              alt="Foto"
+            />
+          ) : null}
 
           <Button type="submit">Guardar</Button>
         </form>
