@@ -1,22 +1,23 @@
 import React from 'react'
 import './CharacterCard.sass'
 
-export const CharacterCard = () => {
+export const CharacterCard = ({ character }) => {
   return (
     <div className="character">
-      <div className="character__image">
-        <img
-          src="https://cdn-icons-png.flaticon.com/512/149/149071.png"
-          alt="character image"
-        />
+      <div className={`character__image ${character.house.toLowerCase()}`}>
+        <img src={character.image} alt="character image" />
       </div>
 
       <div className="character__description">
-        <h4 className="name">Harry Potter</h4>
+        <h4 className="name">
+          {' '}
+          {character.alive ? '' : '+'} {character.name}
+        </h4>
 
         <div className="status">
           <p>
-            vivo <br /> estudiante
+            {character.alive ? 'vivo' : 'finado'} <br />{' '}
+            {character.hogwartsStudent ? 'estudiante' : 'staff'}
           </p>
           <span className="material-symbols-outlined">bookmark</span>
         </div>

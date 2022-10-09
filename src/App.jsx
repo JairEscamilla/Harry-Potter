@@ -6,10 +6,14 @@ import { Menu } from './components/Menu/Menu'
 import { Modal } from './components/Modal/Modal'
 import { RadioButton } from './components/RadioButton/RadioButton'
 import harryPotterImg from './assets/harry-potter.png'
+import charactersData from './data/hp-characters.json'
 import './index.sass'
 
 function App() {
   const [isModalOpen, setIsModalOpen] = useState(false)
+  const [characters, setCharacters] = useState(charactersData)
+
+  console.log(characters)
   const [form, setForm] = useState({
     nombre: '',
     cumpleanios: '',
@@ -55,7 +59,14 @@ function App() {
         <Button variant="outlined">Estudiantes</Button>
         <Button variant="outlined">Staff</Button>
       </div>
-      <CharacterCard></CharacterCard>
+      <div className="character-cards">
+        {characters.map((character) => (
+          <CharacterCard
+            key={character.name}
+            character={character}
+          ></CharacterCard>
+        ))}
+      </div>
       <Modal
         isOpen={isModalOpen}
         title="Agrega un personaje"
