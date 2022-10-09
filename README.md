@@ -1,2 +1,0 @@
-# amTest
-Evalución frontend
