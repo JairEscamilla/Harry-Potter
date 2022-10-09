@@ -48,17 +48,29 @@ function App() {
   }
 
   const [form, setForm] = useState({
-    nombre: '',
-    cumpleanios: '',
-    ojos: '',
-    pelo: '',
-    genero: '',
-    posicion: '',
-    fotografia: '',
+    name: '',
+    dateOfBirth: '',
+    eyeColour: '',
+    hairColour: '',
+    gender: '',
+    hogwartsStudent: false,
+    hogwartsStaff: false,
+    image: '',
   })
 
   const handleFormChange = (event) => {
     const { target } = event
+
+    if (target.name === 'posicion') {
+      setForm({
+        ...form,
+        hogwartsStaff: false,
+        hogwartsStudent: false,
+        [target.value]: true,
+      })
+      return
+    }
+
     setForm({
       ...form,
       [target.name]: target.value,
@@ -71,7 +83,7 @@ function App() {
 
     setForm({
       ...form,
-      fotografia: pictureUrl,
+      image: pictureUrl,
     })
   }
 
@@ -113,27 +125,28 @@ function App() {
           ></CharacterCard>
         ))}
       </div>
+
       <Modal
         isOpen={isModalOpen}
         title="Agrega un personaje"
         setIsOpen={setIsModalOpen}
       >
         <form className="new-character-form" onSubmit={handleFormSubmit}>
-          <Input label="Nombre" name="nombre" onChange={handleFormChange} />
+          <Input label="Nombre" name="name" onChange={handleFormChange} />
 
           <Input
             label="Cumpleaños"
-            name="cumpleanios"
+            name="dateOfBirth"
             onChange={handleFormChange}
           />
           <Input
             label="Color de ojos"
-            name="ojos"
+            name="eyeColour"
             onChange={handleFormChange}
           />
           <Input
             label="Color de pelo"
-            name="pelo"
+            name="hairColour"
             onChange={handleFormChange}
           />
           <div className="radio-group">
@@ -142,13 +155,15 @@ function App() {
               <RadioButton
                 name="genero"
                 id="woman"
-                value="Mujer"
+                value="female"
+                text="Mujer"
                 onChange={handleFormChange}
               />
               <RadioButton
                 name="genero"
                 id="man"
-                value="Hombre"
+                value="male"
+                text="Hombre"
                 onChange={handleFormChange}
               />
             </div>
@@ -159,13 +174,15 @@ function App() {
               <RadioButton
                 name="posicion"
                 id="estudiante"
-                value="Estudiante"
+                value="hogwartsStudent"
+                text="Estudiante"
                 onChange={handleFormChange}
               />
               <RadioButton
                 name="posicion"
                 id="staff"
-                value="Staff"
+                value="hogwartsStaff"
+                text="Staff"
                 onChange={handleFormChange}
               />
             </div>
@@ -181,17 +198,14 @@ function App() {
             className="character-picture"
           />
 
-          {form.fotografia.length > 0 ? (
-            <img
-              className="character-picture"
-              src={form.fotografia}
-              alt="Foto"
-            />
+          {form.image.length > 0 ? (
+            <img className="character-picture" src={form.image} alt="Foto" />
           ) : null}
 
           <Button type="submit">Guardar</Button>
         </form>
       </Modal>
+
       <Menu setIsModalOpen={setIsModalOpen} />
     </div>
   )

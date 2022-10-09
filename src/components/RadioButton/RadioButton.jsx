@@ -1,7 +1,7 @@
 import React from 'react'
 import './RadioButton.sass'
 
-export const RadioButton = ({ name, id, value, onChange }) => {
+export const RadioButton = ({ name, id, value, onChange, text }) => {
   return (
     <div className="radio">
       <input
@@ -13,7 +13,7 @@ export const RadioButton = ({ name, id, value, onChange }) => {
         className="radio__button"
       />
       <label htmlFor={id} className="radio__label">
-        {value}
+        {text}
       </label>
     </div>
   )
