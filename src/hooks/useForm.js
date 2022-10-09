@@ -41,9 +41,17 @@ export const useForm = () => {
     })
   }
 
-  const handleFormSubmit = (event) => {
+  const handleFormSubmit = async (event) => {
     event.preventDefault()
-    console.log(form)
+    const response = await fetch('http://localhost:3000/characters', {
+      body: JSON.stringify(form),
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    })
+    const parsedResponse = await response.json()
+    console.log(parsedResponse)
   }
 
   return { form, handleFormChange, handleFileChange, handleFormSubmit }

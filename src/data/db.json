@@ -1,3 +1,16 @@
 {
-  "characters": []
+  "characters": [
+    {
+      "name": "asd",
+      "dateOfBirth": "asdqw",
+      "eyeColour": "qwewq",
+      "hairColour": "wqewqe",
+      "gender": "",
+      "hogwartsStudent": true,
+      "hogwartsStaff": false,
+      "image": "blob:http://127.0.0.1:5173/68293161-6f99-4313-9f42-71bb954e767e",
+      "genero": "male",
+      "id": 1
+    }
+  ]
 }
