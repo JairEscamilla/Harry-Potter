@@ -13,7 +13,10 @@ body
     background: black
 
 .App
+    display: block
+    margin: 0 auto  
     padding: 40px 20px
+    max-width: 1000px
 
 .hp-letters
     display: block
@@ -72,3 +75,9 @@ body
     left: 50%
     transform: translateX(-50%)
     bottom: 0
+
+@media  (min-width: 768px)
+    .menu__container
+        bottom: unset
+        top: 0
+        transform: translateX(219px)
