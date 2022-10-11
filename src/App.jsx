@@ -24,7 +24,7 @@ function App() {
     filterStudents,
     setCharacters,
     newCharacters,
-  } = useCharacters(isModalOpen)
+  } = useCharacters()
 
   const {
     form,

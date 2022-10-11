@@ -2,8 +2,9 @@ import { useSelector } from 'react-redux'
 import { useState, useRef, useEffect } from 'react'
 
 import charactersData from '../data/hp-characters.json'
+import { apiUrl } from '../utils/apiUrl'
 
-export const useCharacters = (isModalOpen) => {
+export const useCharacters = () => {
   const newCharacters = useRef()
   const favs = useSelector((state) => state.favs.value)
   const favsNames = favs.map(({ name }) => name)
@@ -44,7 +45,7 @@ export const useCharacters = (isModalOpen) => {
 
   useEffect(() => {
     const fetchNewCharacters = async () => {
-      const response = await fetch('http://localhost:3000/characters')
+      const response = await fetch(`${apiUrl}/characters`)
       newCharacters.current = await response.json()
 
       setCharacters([...characters, ...newCharacters.current])

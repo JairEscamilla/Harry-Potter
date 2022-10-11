@@ -1,4 +1,5 @@
 import { useRef, useState } from 'react'
+import { apiUrl } from '../utils/apiUrl'
 
 export const useForm = (
   setIsModalOpen,
@@ -64,7 +65,7 @@ export const useForm = (
 
   const handleFormSubmit = async (event) => {
     event.preventDefault()
-    const response = await fetch('http://localhost:3000/characters', {
+    const response = await fetch(`${apiUrl}/characters`, {
       body: JSON.stringify(form),
       method: 'POST',
       headers: {
