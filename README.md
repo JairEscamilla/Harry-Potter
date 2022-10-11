@@ -1,5 +1,6 @@
 # Harry Potter App
 [Harry Potter App (calm-bunny-a6e13f.netlify.app)](https://calm-bunny-a6e13f.netlify.app/)
+Version de Node: v14.15.0
 
 ### Instrucciones para levantar proyecto
 
