@@ -45,6 +45,7 @@ export const useCharacters = () => {
 
   useEffect(() => {
     const fetchNewCharacters = async () => {
+      console.log('Este es', process.env.NODE_ENV)
       const response = await fetch(`${apiUrl}/characters`)
       newCharacters.current = await response.json()
 
